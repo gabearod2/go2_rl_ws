@@ -28,11 +28,13 @@ To start, clone this repository into your ROS2 workspaces directory:
 ```bash
 cd ~/workspaces
 git clone --recurse-submodules https://github.com/gabearod2/go2_rl_ws
+cd go2_rl_ws
+conda env create -f environment.yml
+conda activate go2_rl_ws_env
 ```
 
 Resolving dependencies:
 ```bash
-pip install onnxruntime-gpu # or onnxruntime-cpu
 sudo apt install ros-humble-rmw-cyclonedds-cpp
 sudo apt install ros-humble-rosidl-generator-dds-idl
 ```
@@ -42,7 +44,9 @@ Ensuring you have not sourced ROS2, compile cyclonedds:
 cd ~/workspaces/go2_rl_ws/src/unitree_ros2/cyclonedds_ws/src
 git clone https://github.com/ros2/rmw_cyclonedds -b humble
 git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
-cd ..
+cd cylconedds
+git checkout tags/0.10.2 -b my-0.10.2-branch
+cd ../..
 colcon build --packages-select cyclonedds
 ```
 
@@ -74,6 +78,8 @@ export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces>
 
 Then, compile unitree_go, unitree_api, rl_deploy, go2_launch, rl_navigation, rl_deploy_nav and unitree_ros2_python packages:
 ```bash
+cd ~/workspaces/go2_rl_ws/src/go2_python_sdk2
+pip3 install -e .
 cd ~/workspaces/go2_rl_ws
 source ~/workspaces/go2_rl_ws/src/unitree_ros2/setup.sh
 colcon build --packages-select unitree_api &&
