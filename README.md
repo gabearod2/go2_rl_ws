@@ -44,7 +44,7 @@ Ensuring you have not sourced ROS2, compile cyclonedds:
 cd ~/workspaces/go2_rl_ws/src/unitree_ros2/cyclonedds_ws/src
 git clone https://github.com/ros2/rmw_cyclonedds -b humble
 git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
-cd cylconedds
+cd cyclonedds/
 git checkout tags/0.10.2 -b my-0.10.2-branch
 cd ../..
 colcon build --packages-select cyclonedds
@@ -53,6 +53,7 @@ colcon build --packages-select cyclonedds
 Source ros and build unitree ROS2:
 ```bash
 source /opt/ros/humble/setup.bash
+rosdep install --from-paths src --ignore-src -r -y
 colcon build
 ```
 
