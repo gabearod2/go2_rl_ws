@@ -13,6 +13,9 @@ dependencies:
   - pip
   - pip:
     - onnxruntime-gpu
+    - lark-parser
+    - catkin_pkg
+    - empy
     
 
 
