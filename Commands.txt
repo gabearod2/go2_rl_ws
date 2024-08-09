@@ -1,3 +1,4 @@
+# Needs to be updated, install ROS2 from source for python 3.8
 conda env create -f environment.yml
 conda activate go2_rl_ws_env
 cd src/go2_python_sdk2
